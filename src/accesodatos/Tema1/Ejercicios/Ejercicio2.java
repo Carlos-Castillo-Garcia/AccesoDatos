@@ -9,6 +9,7 @@ import java.util.Scanner;
  * nombre, permisos de escritura, si e archivo esta oculto y su tama�no en bytes.
  */
 public class Ejercicio2 {
+
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         String ruta = sc.nextLine();
@@ -30,18 +31,18 @@ public class Ejercicio2 {
                             System.out.println("El archivo no esta oculto");
                         }
                         System.out.println(archivoActual.length() + " bytes \n");
-                    }else{
+                    } else {
                         System.out.println(archivoActual.getName() + " es una carpeta \n");
                     }
                 }
             }
         } else {
             System.out.println("Esta carpeta no existe, sera creada.");
-                if (carpeta.mkdir()) {
-                    System.out.println("la carpeta asido creada");
-                } else {
-                    System.out.println("la carpeta no ha sido creada");
-                }
+            if (carpeta.mkdir()) {
+                System.out.println("la carpeta asido creada");
+            } else {
+                System.out.println("la carpeta no ha sido creada");
+            }
         }
     }
 }

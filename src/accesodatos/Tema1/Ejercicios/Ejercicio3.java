@@ -9,7 +9,8 @@ import java.util.Scanner;
  * Esta modificacion del programa es para insertar excepcion de errores
  */
 public class Ejercicio3 {
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String ruta = sc.nextLine();
         File carpeta = new File(ruta);
@@ -30,12 +31,12 @@ public class Ejercicio3 {
                             System.out.println("El archivo no esta oculto");
                         }
                         System.out.println(archivoActual.length() + " bytes \n");
-                    }else{
+                    } else {
                         System.out.println(archivoActual.getName() + " es una carpeta \n");
                     }
                 }
             }
-        } else if(carpeta.isAbsolute()){
+        } else if (carpeta.isAbsolute()) {
             System.out.println("Esta carpeta no existe, sera creada.");
             try {
                 if (carpeta.mkdir()) {
@@ -43,10 +44,10 @@ public class Ejercicio3 {
                 } else {
                     System.out.println("la carpeta no ha sido creada");
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-        }else{
+        } else {
             System.out.println("La ruta no es real, no se puede crear");
         }
     }
