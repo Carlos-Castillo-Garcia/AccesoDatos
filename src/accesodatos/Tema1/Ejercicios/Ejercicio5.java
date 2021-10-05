@@ -8,7 +8,11 @@ import java.io.IOException;
 
 /**
  * @author Manuel
+<<<<<<< Updated upstream
  * Este es un programa al que se le pasa una ruta como parametro y lee y escribe por pantalla cada una de las lineas del archivo
+=======
+ * Este programa esta hecho para un archivo por argumento y leer todas la lineas de ese archivo
+>>>>>>> Stashed changes
  */
 public class Ejercicio5 {
 
