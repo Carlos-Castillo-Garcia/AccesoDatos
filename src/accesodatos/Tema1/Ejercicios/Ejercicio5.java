@@ -32,8 +32,10 @@ public class Ejercicio5 {
                 fr.close();
                 br.close();
             }
+        } catch (FileNotFoundException ex) {
+            System.out.println("El archivo pasado como argumento no existe \n"+ex.getMessage());
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Los Argumentos no son validos" + e.getMessage());
+            System.out.println("Los Argumentos no son validos \n" + e.getMessage());
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
