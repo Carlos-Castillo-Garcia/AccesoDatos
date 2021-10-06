@@ -1,16 +1,16 @@
 package accesodatos.Tema1.Ejercicios;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
 
 /*
  * Esta clase esta orientada a dar informacion de un listado de ficheros de una ruta preespecificada, dando informacion de
- * nombre, permisos de escritura, si e archivo esta oculto y su tama�no en bytes.
+ * nombre, permisos de escritura, si e archivo esta oculto y su tamaño en bytes.
+ * Esta modificacion del programa es para insertar excepcion de errores
  */
 public class Ejercicio2 {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String ruta = sc.nextLine();
         File carpeta = new File(ruta);
@@ -36,13 +36,19 @@ public class Ejercicio2 {
                     }
                 }
             }
-        } else {
+        } else if (carpeta.isAbsolute()) {
             System.out.println("Esta carpeta no existe, sera creada.");
-            if (carpeta.mkdir()) {
-                System.out.println("la carpeta asido creada");
-            } else {
-                System.out.println("la carpeta no ha sido creada");
+            try {
+                if (carpeta.mkdir()) {
+                    System.out.println("la carpeta asido creada");
+                } else {
+                    System.out.println("la carpeta no ha sido creada");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
+        } else {
+            System.out.println("La ruta no es real, no se puede crear");
         }
     }
 }
