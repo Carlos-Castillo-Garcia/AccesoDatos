@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Programa para el aprendizaje del uso del flujo de Bytes, con un archivo
@@ -19,27 +17,37 @@ public class Ejercicio5 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        if (!args[0].isEmpty()) {
+        if (args.length > 0) {
             String ruta = args[0];
             File archivo = new File(ruta);
-            FileInputStream abrirarchivo;
+            FileInputStream abrirarchivo = null;
             try {
                 abrirarchivo = new FileInputStream(archivo);
                 if (abrirarchivo.read() != -1) {
                     int i;
-                    while((i = abrirarchivo.read()) != -1){
-                        System.out.print((char)i + "");
+                    /*
+                    * bucle para la lectura del archivo a la vez que la insercion de los bytes en "i" y la escritura
+                    * con casting de int a char
+                     */
+                    while ((i = abrirarchivo.read()) != -1) {
+                        System.out.print((char) i + "");
                     }
                 } else {
-                    System.out.println("El archivo esta vacio, elija otro.");
+                    System.out.println("\nEl archivo esta vacio, elija otro.");
                 }
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(Ejercicio5.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("\nEl archivo no ha sido encontrado " + ex.getMessage());
             } catch (IOException ex) {
-                Logger.getLogger(Ejercicio5.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("\nError en la lectura del archivo " + ex.getMessage());
+            } finally {
+                try {
+                    abrirarchivo.close();
+                } catch (IOException e) {
+                    System.out.println("\nError al cerrar el archivo");
+                }
             }
         } else {
-            System.out.println("Ha de introducir una ruta para que el programa funcione");
+            System.out.println("\nHa de introducir una ruta para que el programa funcione");
         }
 
     }
